@@ -1,0 +1,37 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r}
+data <- read.csv("/Users/Bryan/Downloads/Book2.csv")
+data
+```
+
+```{r}
+install.packages("effects")
+```
+
+```{r}
+logit <- glm(BUY_8 ~ price + age + children + class + council + emp_ft + emp_hwife + no_dish + n_videos + price_mc + race_dummy + value + sex + rent + sat_have + vcr_have + watch_bbc1 + Watch_bbc2 + watch_itv + watch_ch4 + tv_satis1_5, data=data, family=binomial)
+```
+
+```{r}
+summary(logit)
+```
+```{r}
+plot(allEffects(logit))
+```
+
+```{r}
+logit_1 <- glm(BUY_8 ~ price, data=data, family=binomial)
+plot(allEffects(logit_1))
+```
+
+```{r}
+logit_2 <- glm(BUY_8 ~ value, data=data, family=binomial)
+plot(allEffects(logit_2))
+```
+
+
+
